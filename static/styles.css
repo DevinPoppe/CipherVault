@@ -1,0 +1,129 @@
+body {
+    background-color: #F8F5F5;
+}
+
+.alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -850%);
+    color: #ffffff;
+    background-color: #FF8080;
+    font-size: 1em;
+    font-family: 'Hind Madurai', sans-serif;
+    border-radius: .5em;
+    border: 1px solid;
+    margin: 10px 0px;
+    padding: 12px;
+    width: 400px;
+    border-color: transparent;
+    box-shadow: 8px 8px 15px 1px rgba(0, 0, 0, 0.19);
+}
+
+.alert:hover {
+    background-color: #e67373;
+}
+
+
+.navbar-brand {
+    color: #ACC1C0
+}
+
+.nav-link,
+.title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: #F8F5F5;
+}
+
+.nav-link:hover {
+    color: #cdcdcd
+}
+
+
+footer {
+    font-family: 'Lora';
+}
+
+.mb-3 {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.buttonlogin {
+    padding: 10px;
+    outline: none;
+    border: none;
+    color: #000;
+    font-size: 1em;
+    background: transparent;
+    border-left: 2px solid #ACC1C0;
+    border-bottom: 2px solid #ACC1C0;
+    border-radius: 8px;
+    font-size: .9em;
+    letter-spacing: 2px;
+    transition: all 0.15s;
+}
+
+.buttonlogin:focus {
+    border: 2px solid #ACC1C0;
+    border-radius: 8px;
+    transition: all 0.15s;
+}
+
+.buttonlogin::placeholder {
+    color: #A9A9A9;
+    font-family: 'Hind Madurai', sans-serif;
+    text-transform: uppercase;
+
+}
+
+.enter {
+    height: 45px;
+    width: 100px;
+    border-radius: 5px;
+    border: 2px solid #ACC1C0;
+    cursor: pointer;
+    background-color: transparent;
+    transition: 0.5s;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 1em;
+    font-size: .9em;
+    color: #A9A9A9;
+    font-family: 'Hind Madurai', sans-serif;
+    margin-top: 5px;
+    scale: 0.85;
+
+}
+
+
+.enter:hover {
+    background-color: #ACC1C0;
+    color: white;
+}
+
+h1 {
+    color: #141414;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+    margin-bottom: 40px;
+}
+
+h3 {
+    color: #141414;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 50px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+}

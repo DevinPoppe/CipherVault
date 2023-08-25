@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Generate Password
+{% endblock %}
+
+{% block main %}
+<form action="/generate" method="post" id="generateForm">
+
+    <!--referance to stylesheets-->
+    <link href="static/layout.css" rel="stylesheet">
+    <link href="static/slider.css" rel="stylesheet">
+    <link href="static/checkbox.css" rel="stylesheet">
+
+    <div class="heading">
+        <p class="heading1">Random Password Generator</p>
+        <p class="heading2">Create strong and secure passwords to keep your account safe.</p>
+    </div>
+
+    <div class="parent">
+        <div class="whitespaceleft"></div><!--whitespace-->
+        <div class="password"><!--password box (copy, new)-->
+            <div class="box passwordbbox" id="pwtextbox">
+                {{password}}
+            </div>
+            <div class="box copypassword">
+                <button class="button newpassword" type="submit"></button>
+                <button type="button" class="button copy" id="copy_button"></button>
+            </div>
+            <br>
+            <div class="indicator">
+                <div class="weak" style="background-color: {{weak}};"></div>
+                <div class="medium" style="background-color: {{medium}};"></div>
+                <div class="strong" style="background-color: {{strong}};"></div>
+            </div>
+            <div class="indicatortext">{{indication_text}}</div>
+        </div>
+        <div class="passwordLength"> <!--password length-->
+            <div class="box passwordLengthTextCSS">Password length: <span id="pwLengthText" style="font-weight: 550;"></span></div>
+            <div class="box slider__"><input type="range" min="1" max="50" value={{len}} class="slider" id="pwLength" name="slidervalue"></div>
+        </div>
+        <div class="charactersUsed"> <!--checkboxes for characters, symbols and numbers-->
+            <div class="box usedCharacters">Characters used: </div>
+
+            <div class="box uppercase">
+                <input type="checkbox" name="uppercase" id="uppercase" {{uppercase}} oninput="this.form.submit()"><!--submit on checkbox click-->
+                <label for="uppercase"> ABC</label>
+            </div>
+
+            <div class="box lowercase">
+                <input type="checkbox" name="lowercase" id="lowercase" {{lowercase}} oninput="this.form.submit()"><!--{{lowercase}} to check the box or not -->
+                <label for="lowercase"> abc</label>
+            </div>
+
+            <div class="box numbers">
+                <input type="checkbox" name="numbers" id="numbers" {{numbers}} oninput="this.form.submit()">
+                <label for="numbers"> 123</label>
+            </div>
+
+            <div class="box symbols">
+                <input type="checkbox" name="symbols" id="symbols" {{symbols}} oninput="this.form.submit()">
+                <label for="symbols"> &#!</label>
+            </div>
+        </div>
+        <div class="whitespaceright"></div> <!--whitespace-->
+    </div>
+
+    <script>
+        //colorize password
+        window.addEventListener('load', function() { // execute when page is fully loaded
+            var passwordBox = document.getElementById("pwtextbox"); // select the password box
+            var password = passwordBox.innerHTML;
+            var coloredPassword = "";
+            var punctuation = '!@#$%^?*'; //goes green
+
+            for (var i = 0; i < password.length; i++) { // iterate over each character one by one
+                var character = password.charAt(i);
+
+                if (!isNaN(character)) { // if char is not not a number
+                    coloredPassword += '<span style="color:#FF980E">' + character + '</span>'; //orange
+                } else if (punctuation.includes(character)) {
+                    coloredPassword += '<span style="color:#069C56">' + character + '</span>'; //green
+                } else {
+                    coloredPassword += character; // add char to new string
+                }
+            }
+
+            passwordBox.innerHTML = coloredPassword;
+        })
+
+
+        var slider = document.getElementById("pwLength");
+        var output = document.getElementById("pwLengthText");
+        var previousValue = slider.value;
+        var form = document.getElementById("generateForm");
+
+        output.innerHTML = previousValue;
+
+        slider.oninput = function() { //display the slider value next to slider
+            output.innerHTML = this.value;
+        }
+
+        //reload when slider is released to generate new password
+        document.addEventListener("mouseup", function(event) {
+            if (event.button === 0 && slider.value !== previousValue) { //check if slider has moved
+                form.submit();
+            }
+        });
+
+        //copy password
+        const copyButton = document.getElementById("copy_button");
+        const passwordBox = document.getElementById("pwtextbox");
+        const text = passwordBox.textContent;
+
+        copyButton.addEventListener("click", () => {
+            navigator.clipboard.writeText("{{password}}"); // copy to clipboard
+            passwordBox.textContent = "Copied!"; //display Copied! text in password Box for set time of 750
+            setTimeout(() => passwordBox.textContent = text, 750);
+        });
+    </script>
+
+</form>
+{% endblock %}

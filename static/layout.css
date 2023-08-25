@@ -1,0 +1,202 @@
+.parent {
+    display: grid;
+    grid-template-columns: .75fr 1fr .75fr;
+    grid-template-rows: 120px repeat(2, 50px);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+
+}
+
+.heading1,
+.heading2 {
+    justify-self: center;
+    align-self: center;
+    margin-bottom: 20px;
+    font-family: 'Hind Madurai', sans-serif;
+}
+
+.heading1 {
+    font-size: 56px;
+    font-weight: 700;
+
+
+}
+
+.heading2 {
+    font-size: 22px;
+    font-weight: 100;
+    margin-bottom: 60px;
+}
+
+.whitespaceleft {
+    grid-area: 1 / 1 / 4 / 2;
+}
+
+.whitespaceright {
+    grid-area: 1 / 3 / 4 / 4;
+}
+
+
+/* Password box */
+.password {
+    grid-area: 1 / 2 / 2 / 3;
+    display: grid;
+    grid-template-columns: 1fr 75px 75px;
+    grid-template-rows: 1fr 0.25fr 0.3fr;
+    grid-column-gap: 0px;
+
+}
+
+.copypassword {
+    display: grid;
+    height: 75px;
+}
+
+.box {
+    font-size: 24px;
+    font-family: 'Hind Madurai', sans-serif;
+    font-weight: 200;
+    text-align: start;
+}
+
+.passwordbbox {
+    grid-area: 1 / 1 / 2 / 2;
+    position: relative;
+    display: inline-block;
+    background-color: transparent;
+    padding: 10px;
+    padding-right: 0px;
+    padding-top: 13px;
+    width: 1fr;
+    height: 75px;
+    font-size: 36px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 1px solid #b5b5b5;
+    border-radius: 20px 0px 0px 20px;
+    border-right: none;
+    align-items: center;
+    color: black;
+}
+
+.copy {
+    grid-area: 1 / 2 / 2 / 3;
+    background: url("../static/images/copy.png") no-repeat center;
+    border: 1px solid #b5b5b5;
+    border-left: none;
+    border-right: none;
+}
+
+.newpassword {
+    grid-area: 1 / 3 / 2 / 4;
+    background: url("../static/images/reload.png") no-repeat center;
+    transform: rotate(-90deg);
+    border: 1px solid #b5b5b5;
+    border-top: none;
+    border-radius: 0px 0px 20px 20px;
+}
+
+.button {
+    position: relative;
+    height: 75px;
+    width: 75px;
+    background-size: 33px 33px;
+    background-color: transparent;
+}
+
+.button:hover {
+    background-size: 35px 35px;
+}
+
+/* Password safety indicator */
+.indicator {
+    grid-area: 2 / 1 / 3 / 4;
+    height: 10px;
+    display: flex;
+    align-items: top;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.indicator div:not(.indicatortext) {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.medium {
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.indicatortext {
+    grid-area: 3 / 1 / 4 / 4;
+    font-size: 24px;
+    font-weight: 500;
+    font-family: 'Hind Madurai', sans-serif;
+}
+
+/* Password length box*/
+.passwordLength {
+    grid-area: 2 / 2 / 3 / 3;
+    display: grid;
+    grid-template-columns: 225px 1fr;
+    grid-template-rows: 50px;
+    grid-column-gap: 1px;
+    grid-row-gap: 0px;
+}
+
+.passwordLengthTextCSS {
+    grid-area: 1 / 1 / 2 / 2;
+    padding-top: 10px;
+    padding-left: 10px;
+    font-size: 24px;
+}
+
+.slider__ {
+    grid-area: 1 / 2 / 2 / 3;
+    padding-top: 10px;
+}
+
+
+/* Password character checkboxes*/
+.charactersUsed {
+    grid-area: 3 / 2 / 4 / 3;
+    display: grid;
+    grid-template-columns: 225px repeat(4, 1fr);
+    grid-template-rows: 50px;
+    grid-gap: 1px;
+}
+
+.usedCharacters {
+    grid-column: 1;
+    padding-left: 10px;
+}
+
+.uppercase {
+    grid-column: 2;
+}
+
+.lowercase {
+    grid-column: 3;
+}
+
+.numbers {
+    grid-column: 4;
+}
+
+.symbols {
+    grid-column: 5;
+}
+
+/* miscellaneous */
+.box:not(.passwordLengthTextCSS, .slider__, .passwordbbox, .usedCharacters) {
+    font-weight: 550;
+}
+
+div:not(.parent, .box, .indicator, .indicator div, .indicatortext) {
+    padding: 10px;
+}
